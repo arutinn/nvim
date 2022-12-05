@@ -36,7 +36,11 @@ Plug 'vim-scripts/rainbow-end'
 Plug 'vim-scripts/vim-qf'
 
 Plug 'w0rp/ale'
-Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'nvim-lua/plenary.nvim'                                  " dependency for telescope
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " dependency for telescope
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+
 Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdtree'
 
@@ -61,7 +65,6 @@ set list
 set listchars=trail:•             " Show spaces in end of line
 set clipboard=unnamedplus
 set scrolloff=10                  " Show 3 lines of context around the cursor.
-
 set autoread
 au FocusGained * :checktime
 
@@ -91,17 +94,14 @@ let Grep_Default_Filelist = '*.*'
 let Grep_Skip_Files = '*.log *.sql *.png *.jpg *.jpeg *.gif'
 let Grep_Skip_Dirs = '.git tmp coverage log solr public _site node_modules'
 
-" CtrlP
-let g:ctrlp_map = '<A-o>'
-let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn|tmp|coverage|log|node_modules)$'
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:15,results:15'
+" Telescope
+nnoremap <A-o> <cmd>Telescope find_files<cr>
+nnoremap <S-tab> <cmd>Telescope buffers<cr>
 
 " Highlight cursor (only for current window)
 let g:conoline_auto_enable = 1
 let g:conoline_use_colorscheme_default_normal=1
 let g:conoline_use_colorscheme_default_insert=1
-
-nnoremap <silent> <S-tab> :CtrlPBuffer<CR>
 
 " Commentary
 map <C-c> <esc>gcc<end>
