@@ -3,16 +3,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'chase/vim-ansible-yaml'
-Plug 'bling/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'Raimondi/delimitMate'
 Plug 'hail2u/vim-css3-syntax'
-" Plug 'othree/svg-properties-syntax.vim'
 Plug 'othree/html5.vim'
-Plug 'ap/vim-css-color'
+Plug 'brenoprata10/nvim-highlight-colors'
 Plug 'gcorne/vim-sass-lint'
-Plug 'ntpeters/vim-airline-colornum'
 Plug 'AndrewRadev/splitjoin.vim'
 
+Plug 'ryanoasis/vim-devicons'
 Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'tomtom/tlib_vim'
 Plug 'activebridge/rails-snippets'
@@ -45,14 +44,14 @@ Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdtree'
 
 Plug 'airblade/vim-localorie'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'joshdick/onedark.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'miyakogi/conoline.vim'
 
 call plug#end()
 
+set termguicolors                 " enable true colors support
 colorscheme onedark
 set guifont=Monospace:h13         " Font
 
@@ -75,6 +74,9 @@ imap <C-s> <ESC>:w<cr>
 map <C-a> <esc>ggVG<end>
 vnoremap < <gv
 vnoremap > >gv
+
+" Startify
+let g:startify_change_to_dir = 0
 
 " Bubble single&multiple lines
 vnoremap <D-Up> <esc>`<gv:m '<-2<cr>gv
@@ -114,9 +116,16 @@ map <F2> :NERDTreeToggle<cr>
 map gt   :NERDTreeFind<cr>
 let NERDTreeAutoDeleteBuffer = 1
 
-" GitGutter
-set updatetime=100
-let g:gitgutter_map_keys = 0
+" Gitsigns
+lua require('gitsigns').setup()
+
+" Lualine
+lua require('lualine').setup()
+
+" nvim-highlight-colors
+set t_Co=256
+lua require("nvim-highlight-colors").setup { enable_tailwind = true }
+lua require("nvim-highlight-colors").turnOn()
 
 " Rails
 map gV :Eview<CR>
