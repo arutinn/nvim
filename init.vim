@@ -77,10 +77,10 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Bubble single&multiple lines
-vnoremap <A-Up> <esc>`<gv:m '<-2<cr>gv
-vnoremap <A-Down> <esc>`>gv:m '>+1<cr>gv
-nnoremap <A-Up> mz:m-2<cr>`z
-nnoremap <A-Down> mz:m+<cr>`z
+vnoremap <D-Up> <esc>`<gv:m '<-2<cr>gv
+vnoremap <D-Down> <esc>`>gv:m '>+1<cr>gv
+nnoremap <D-Up> mz:m-2<cr>`z
+nnoremap <D-Down> mz:m+<cr>`z
 
 " ALE
 let g:ale_fix_on_save = 1
@@ -95,7 +95,7 @@ let Grep_Skip_Files = '*.log *.sql *.png *.jpg *.jpeg *.gif'
 let Grep_Skip_Dirs = '.git tmp coverage log solr public _site node_modules'
 
 " Telescope
-nnoremap <A-o> <cmd>Telescope find_files<cr>
+nnoremap <D-o> <cmd>Telescope find_files<cr>
 nnoremap <S-tab> <cmd>Telescope buffers<cr>
 
 " Highlight cursor (only for current window)
