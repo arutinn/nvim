@@ -40,7 +40,8 @@ Plug 'nvim-lua/plenary.nvim'                                  " dependency for t
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " dependency for telescope
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
+Plug 'echasnovski/mini.starter', { 'branch': 'stable' }
 Plug 'preservim/nerdtree'
 
 Plug 'airblade/vim-localorie'
@@ -49,11 +50,16 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'joshdick/onedark.vim'
 Plug 'miyakogi/conoline.vim'
 
+Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim'
+
+Plug 'mrjones2014/smart-splits.nvim'
+
 call plug#end()
 
 set termguicolors                 " enable true colors support
-colorscheme onedark
-set guifont=Monospace:h13         " Font
+let ayucolor="light"
+colorscheme ayu
 
 set number
 set expandtab ts=2 sw=2 ai        " Two spaces instead tab
@@ -77,6 +83,7 @@ vnoremap > >gv
 
 " Startify
 let g:startify_change_to_dir = 0
+lua require('mini.starter').setup()
 
 " Bubble single&multiple lines
 vnoremap <D-Up> <esc>`<gv:m '<-2<cr>gv
@@ -99,11 +106,15 @@ let Grep_Skip_Dirs = '.git tmp coverage log solr public _site node_modules'
 " Telescope
 nnoremap <D-o> <cmd>Telescope find_files<cr>
 nnoremap <S-tab> <cmd>Telescope buffers<cr>
+" lua require("telescope.builtin").find_files({ layout_config = { { width=0.7 } } })
 
 " Highlight cursor (only for current window)
 let g:conoline_auto_enable = 1
 let g:conoline_use_colorscheme_default_normal=1
 let g:conoline_use_colorscheme_default_insert=1
+
+lua vim.keymap.set('n', '<C-Left>', require('smart-splits').resize_left)
+lua vim.keymap.set('n', '<C-Right>', require('smart-splits').resize_down)
 
 " Commentary
 map <C-c> <esc>gcc<end>
