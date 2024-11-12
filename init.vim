@@ -38,7 +38,7 @@ Plug 'w0rp/ale'
 
 Plug 'nvim-lua/plenary.nvim'                                  " dependency for telescope
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " dependency for telescope
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'echasnovski/mini.starter', { 'branch': 'stable' }
 Plug 'preservim/nerdtree'
