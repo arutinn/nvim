@@ -40,7 +40,7 @@ Plug 'nvim-lua/plenary.nvim'                                  " dependency for t
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } " dependency for telescope
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
-Plug 'mhinz/vim-startify'
+Plug 'echasnovski/mini.starter', { 'branch': 'stable' }
 Plug 'preservim/nerdtree'
 
 Plug 'airblade/vim-localorie'
@@ -77,6 +77,7 @@ vnoremap > >gv
 
 " Startify
 let g:startify_change_to_dir = 0
+lua require('mini.starter').setup()
 
 " Bubble single&multiple lines
 vnoremap <D-Up> <esc>`<gv:m '<-2<cr>gv
